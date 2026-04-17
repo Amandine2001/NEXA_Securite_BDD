@@ -4,7 +4,10 @@ import lecture_fichier
 import sauvegarde
 import check_format
 
+from cryptography.fernet import Fernet
 
+
+# -------- FONCTION PRINCIPALE --------
 def main(chemin_fichier):
 
     # Vérification du format du document
@@ -25,8 +28,15 @@ def main(chemin_fichier):
     print(f"Données lues :{data}")
 
     # Chiffrement du document
-
     ## Chiffrement symetrique
+
+    key = Fernet.generate_key()
+
+    encrypted_data_sym = chiffrement.chiffrement_symetrique(data, key)
+    print(f"Données chiffrées (symétrique) : {encrypted_data_sym}")
+
+    decrypted_data_sym = chiffrement.dechiffrement_symetrique(encrypted_data_sym, key)
+    print(f"Données déchiffrées (symétrique) : {decrypted_data_sym}")
 
 
 if __name__ == "__main__":
