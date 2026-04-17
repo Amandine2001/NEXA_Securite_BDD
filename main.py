@@ -1,30 +1,34 @@
 # Importation des librairies et modules
 import chiffrement
+import lecture_fichier
 import sauvegarde
 import check_format
 
-# Vérification du format du document
 
-""" def lecture_configuration():
-    config = {}
-    with open('config.properties', 'r') as f:
-        for line in f:
-            if line.strip() and not line.startswith('#'):
-                key, value = line.strip().split('=', 1)
-                config[key] = value
-    return config
- """
+def main(chemin_fichier):
 
-
-def main():
-    """config = lecture_configuration()
-    chemin_fichier = config.get('NOM_FICHIER')"""
-
-    chemin_fichier = "data/boursobank.csv"
-
+    # Vérification du format du document
     format_fichier = check_format.check_format_doc(chemin_fichier)
     print(f"Format de fichier détecté : {format_fichier}")
 
+    # Lecture du document
+    match format_fichier:
+        case "xlsx":
+            data = lecture_fichier.lecture_fichier_xlsx(chemin_fichier)
+        case "csv":
+            data = lecture_fichier.lecture_fichier_csv(chemin_fichier)
+        case "txt":
+            data = lecture_fichier.lecture_fichier_txt(chemin_fichier)
+        case _:
+            raise ValueError("Format de fichier non supporté.")
+
+    print(f"Données lues :{data}")
+
+    # Chiffrement du document
+
+    ## Chiffrement symetrique
+
 
 if __name__ == "__main__":
-    main()
+    chemin_fichier = "data/text_to_clean.txt"
+    main(chemin_fichier=chemin_fichier)
