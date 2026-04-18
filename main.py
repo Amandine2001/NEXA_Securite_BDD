@@ -5,13 +5,11 @@ import lecture_fichier
 import sauvegarde
 import check_format
 import gestion_cle
-
-from cryptography.fernet import Fernet
-from cryptography.hazmat.primitives.asymmetric import rsa, padding
-from cryptography.hazmat.primitives import serialization, hashes
-
+import os
 
 # -------- FONCTION PRINCIPALE --------
+
+
 def main(chemin_fichier):
 
     # 1. Vérification du format du document
@@ -37,8 +35,8 @@ def main(chemin_fichier):
     print("\n--- Chiffrement symétrique ---")
 
     # 3.1.1. Gestion des clés
-    gestion_cle.generation_cle("cle_symetrique.key")
-    key = gestion_cle.lecture_cle("cle_symetrique.key")
+    gestion_cle.generation_cle_fernet("cle_symetrique.key")
+    key = gestion_cle.lecture_cle_fernet("cle_symetrique.key")
     print(f"Clé symétrique : {key}")
 
     # 3.1.2. Chiffrement et déchiffrement
@@ -50,24 +48,35 @@ def main(chemin_fichier):
     )
     print(f"Fichier déchiffré : {fichier_decrypter}")
 
-    """ # 3.2. Chiffrement asymetrique
+    # 3.2. Chiffrement asymetrique
     print("\n--- Chiffrement asymétrique ---")
 
     # 3.2.1. Génération des clés
-    private_key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
-    public_key = private_key.public_key()
+
+    private_key, public_key = gestion_cle.generation_cle_rsa()
     print(f"Clé publique : {public_key}")
     print(f"Clé privée : {private_key}")
 
-    # 3.2.2. Chiffrement et déchiffrement
-    data_str = str(data)
-    encrypted_data = chiffrement_asymetrique.chiffrement_asymetrique(data_str, public_key)
-    print(f"Données chiffrées : {encrypted_data}")
+    # 2. Génération des clés si elles n'existent pas
+    if not os.path.exists("private.pem") or not os.path.exists("public.pem"):
+        print("Génération des clés RSA...")
+        gestion_cle.generation_cle_rsa()
 
-    decrypted_data = chiffrement_asymetrique.dechiffrement_asymetrique(encrypted_data, private_key)
-    print(f"Données déchiffrées : {decrypted_data}") """
+    # 3. Chiffrement du fichier
+    print("Chiffrement en cours...")
+    chiffrement_asymetrique.encrypt_file_hybrid(chemin_fichier, "public.pem")
+
+    print(f"Fichier chiffré : {chemin_fichier}.enc")
+    print(f"Clé chiffrée : {chemin_fichier}.key.enc")
+
+    # 4. Déchiffrement
+    print("Déchiffrement en cours...")
+    chiffrement_asymetrique.decrypt_file_hybrid(chemin_fichier, "private.pem")
+
+    fichier_dechiffre = chemin_fichier + ".dec"
+    print(f"Fichier déchiffré : {fichier_dechiffre}")
 
 
 if __name__ == "__main__":
-    chemin_fichier = "data/Atelier1-RACIO-SNCF.xlsx"
+    chemin_fichier = "data/text_to_clean.txt"
     main(chemin_fichier=chemin_fichier)
