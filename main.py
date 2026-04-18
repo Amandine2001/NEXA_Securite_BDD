@@ -76,7 +76,11 @@ def main(chemin_fichier):
     fichier_dechiffre = chemin_fichier + ".dec"
     print(f"Fichier déchiffré : {fichier_dechiffre}")
 
+    # 3. Sauvegarde du document chiffré
+    print("\n--- Sauvegarde du document chiffré ---")
+    sauvegarde.sauvegarde_fichier(fichier_crypte, "sauvegarde_1", "sauvegarde_2")
+
 
 if __name__ == "__main__":
-    chemin_fichier = "data/text_to_clean.txt"
+    chemin_fichier = "data/Atelier1-RACIO-SNCF.xlsx"
     main(chemin_fichier=chemin_fichier)
