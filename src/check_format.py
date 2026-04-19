@@ -16,10 +16,3 @@ def check_format_doc(chemin_fichier):
             raise ValueError(
                 "Format de fichier non supporté. Veuillez fournir un fichier .xlsx, .csv ou .txt."
             )
-
-
-# Tests de la fonction
-""" print(check_format_doc("data/boursobank.csv")) 
-print(check_format_doc("data/text_to_clean.txt"))
-print(check_format_doc("data/Atelier1-RACIO-SNCF.xlsx")) 
-print(check_format_doc("data/Leadership.docx")) """

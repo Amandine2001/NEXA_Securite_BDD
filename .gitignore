@@ -209,3 +209,7 @@ __marimo__/
 # Données locales
 data/
 cle_symetrique.key
+private.pem
+public.pem
+sauvegarde_1/
+sauvegarde_2/
