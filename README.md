@@ -36,6 +36,7 @@ En résumé, le chiffrement symétrique utilise donc une seule clé pour chiffre
 Pour la partie sur le chiffrement asymétrique, l'utilisation d'une paire de clés (publique et privée) permet un échange sécurisé, mais il est beaucoup plus lent et peu adapté aux fichiers.
 
 En effet, en testant le modèle de chiffrement RSA seul (`chiffrement_test_rsa.py`), ce dernier ne supporte pas vraiment les fichiers (même 15Ko est lourd et stop le code). 
+Par contre, en le testant avec un petit fichier d'une ligne en format .txt, ce code fonctionne très bien.
 
 Cette méthode n'est pas active dans le `main.py`car cela génère une erreur.  
 
@@ -56,7 +57,7 @@ Création d'un module `sauvegarde.py` permettant à l'aide de la fonction `sauve
 
 Pour choisir la bonne méthode de chiffrement, un module de comparaison de performance `compariason.py` permet de voir le temps que prend le chiffrement et de déchiffrement selon la méthode utilisée (symétrique, asymétrique ou hybride). 
 
-De manière générale, les tests montrent que le chiffrement symétrique est le plus performant en termes de vitesse, car il permet de chiffrer et déchiffrer rapidement des fichiers, y compris volumineux. En revanche, il présente une limite liée à la gestion et au partage sécurisé de la clé. Le chiffrement RSA, bien que très sécurisé grâce à l’utilisation d’une paire de clés publique et privée, est nettement plus lent et ne peut pas être utilisé efficacement pour chiffrer directement des fichiers de grande taille, en raison de ses contraintes techniques. Enfin, la méthode hybride combine les avantages des deux approches : les données sont chiffrées avec un algorithme symétrique rapide, tandis que la clé est protégée par RSA. Cette solution offre ainsi un excellent compromis entre performance et sécurité.
+De manière générale, les tests montrent que le chiffrement symétrique est le plus performant en termes de vitesse, car il permet de chiffrer et déchiffrer rapidement des fichiers, y compris volumineux. En revanche, il présente une limite liée à la gestion et au partage sécurisé de la clé. Le chiffrement RSA, bien que très sécurisé grâce à l’utilisation d’une paire de clés publique et privée, est nettement plus lent et ne peut pas être utilisé efficacement pour chiffrer directement des fichiers de grande taille, en raison de ses contraintes techniques. Enfin, la méthode hybride combine les avantages des deux approches : les données sont chiffrées avec un algorithme symétrique rapide, tandis que la clé est protégée par RSA. Cette solution offre ainsi un excellent compromis entre performance et sécurité. 
 
 ## Description des tests réalisés pour vérifier le fonctionnement de la méthode de sauvegarde.
 

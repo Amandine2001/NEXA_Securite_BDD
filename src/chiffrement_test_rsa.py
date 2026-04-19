@@ -54,3 +54,11 @@ def decrypt_file_rsa(input_path, private_key_path):
     # Sauvegarde
     with open(input_path + ".rsa.dec", "wb") as file:
         file.write(decrypted_data)
+
+
+if __name__ == "__main__":
+    fichier_test = "data/test1.txt"
+    public_key = "public.pem"
+    private_key = "private.pem"
+    encrypt_file_rsa(fichier_test, public_key)
+    decrypt_file_rsa(fichier_test, private_key)

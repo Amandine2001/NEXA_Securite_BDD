@@ -1,8 +1,8 @@
 import time
-import src.chiffrement_symetrique as chiffrement_symetrique
-import src.chiffrement_asymetrique as chiffrement_asymetrique
-import src.chiffrement_test_rsa as chiffrement_test_rsa
-import src.gestion_cle as gestion_cle
+import chiffrement_symetrique
+import chiffrement_asymetrique
+import chiffrement_test_rsa
+import gestion_cle
 import os
 
 import time
@@ -33,7 +33,7 @@ def benchmark(fichier):
     t_enc = time.time() - start
 
     start = time.time()
-    chiffrement_test_rsa.decrypt_file_rsa(fichier + ".rsa", "private.pem")
+    chiffrement_test_rsa.decrypt_file_rsa(fichier, "private.pem")
     t_dec = time.time() - start
 
     resultats["RSA"] = (t_enc, t_dec) """

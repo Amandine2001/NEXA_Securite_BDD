@@ -1,12 +1,12 @@
 # Importation des librairies et modules
-import src.chiffrement_symetrique as chiffrement_symetrique
-import src.chiffrement_asymetrique as chiffrement_asymetrique
-import src.lecture_fichier as lecture_fichier
-import src.sauvegarde as sauvegarde
-import src.check_format as check_format
-import src.gestion_cle as gestion_cle
-import src.lecture_configuration as lecture_configuration
-import src.comparaison as comparaison
+import chiffrement_symetrique
+import chiffrement_asymetrique
+import lecture_fichier
+import sauvegarde
+import check_format
+import gestion_cle
+import lecture_configuration
+import comparaison
 import os
 
 # -------- FONCTION PRINCIPALE --------
