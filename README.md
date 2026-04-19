@@ -46,7 +46,7 @@ La création d'un module hybride est préférable pour répondre au problème é
 
 Le module hybride est nommé `chiffrement_asymetrique.py`. Ce dernier contient une fonction pour l'encodage `encrypt_file_hybrid(input_path, public_key_path)` et une fonction pour le décodage `decrypt_file_hybrid(input_path, private_key_path)`. 
 
-Celle pour l'encodage fait un chiffrement symétrique à l'aide de Fernet puis 
+Celle pour l'encodage fait un chiffrement symétrique à l'aide de Fernet puis une fois que la clé est crée, l'algorithme la chiffre de façon asymétrique (RSA). Cela permet ainsi une sécurisation à la fois du texte avec le chiffrement symétrique qui est plus adapté aux fichiers et de la clé de chiffrement grâce à la méthode RSA.
 
 ### 7. Sauvegarde des chiffrements
 

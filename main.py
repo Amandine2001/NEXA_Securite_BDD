@@ -6,6 +6,7 @@ import src.sauvegarde as sauvegarde
 import src.check_format as check_format
 import src.gestion_cle as gestion_cle
 import src.lecture_configuration as lecture_configuration
+import src.comparaison as comparaison
 import os
 
 # -------- FONCTION PRINCIPALE --------
@@ -62,6 +63,13 @@ def main(chemin_fichier, dossier_local="sauvegarde_1", dossier_cloud="sauvegarde
 
     print("\n--- Sauvegarde du document chiffré ---")
     sauvegarde.sauvegarde_fichier(fichier_crypte, dossier_local, dossier_cloud)
+
+    print("\n ---- Comparaison des performances ----")
+    resultats = comparaison.benchmark(chemin_fichier)
+    for algo, (enc, dec) in resultats.items():
+        print(f"{algo} -> chiffrement: {enc:.4f}s | déchiffrement: {dec:.4f}s")
+
+    print("\n--- Fin de l'algorithme ---")
 
 
 if __name__ == "__main__":

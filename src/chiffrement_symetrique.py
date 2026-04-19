@@ -4,17 +4,7 @@ from cryptography.fernet import Fernet
 import os
 
 
-# Fonctions de chiffrement symétrique
-
-""" def chiffrement_symetrique(data, key):
-    fernet = Fernet(key)
-    encrypted_data = fernet.encrypt(data.encode())
-    return encrypted_data
-
-def dechiffrement_symetrique(encrypted_data, key):
-    fernet = Fernet(key)
-    decrypted_data = fernet.decrypt(encrypted_data).decode()
-    return decrypted_data """
+# Fonctions
 
 
 def chiffrement_symetrique(
