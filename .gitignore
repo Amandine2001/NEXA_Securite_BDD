@@ -208,8 +208,11 @@ __marimo__/
 
 # Données locales
 data/
-cle_symetrique.key
-private.pem
-public.pem
+
+# Données de sauvegarde
 sauvegarde_1/
 sauvegarde_2/
+
+# Clés de chiffrement
+*.pem
+*.key

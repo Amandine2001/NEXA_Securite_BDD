@@ -54,7 +54,9 @@ Création d'un module `sauvegarde.py` permettant à l'aide de la fonction `sauve
 
 ## Le détail des tests réalisés pour choisir la bonne méthode de chiffrement
 
-Pour choisir la bonne méthode de chiffrement, 
+Pour choisir la bonne méthode de chiffrement, un module de comparaison de performance `compariason.py` permet de voir le temps que prend le chiffrement et de déchiffrement selon la méthode utilisée (symétrique, asymétrique ou hybride). 
+
+De manière générale, les tests montrent que le chiffrement symétrique est le plus performant en termes de vitesse, car il permet de chiffrer et déchiffrer rapidement des fichiers, y compris volumineux. En revanche, il présente une limite liée à la gestion et au partage sécurisé de la clé. Le chiffrement RSA, bien que très sécurisé grâce à l’utilisation d’une paire de clés publique et privée, est nettement plus lent et ne peut pas être utilisé efficacement pour chiffrer directement des fichiers de grande taille, en raison de ses contraintes techniques. Enfin, la méthode hybride combine les avantages des deux approches : les données sont chiffrées avec un algorithme symétrique rapide, tandis que la clé est protégée par RSA. Cette solution offre ainsi un excellent compromis entre performance et sécurité.
 
 ## Description des tests réalisés pour vérifier le fonctionnement de la méthode de sauvegarde.
 
